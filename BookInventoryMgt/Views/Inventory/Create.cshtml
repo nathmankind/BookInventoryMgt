@@ -1,0 +1,75 @@
+﻿@model Inventory;
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/minimum-age.js"></script>
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header text-center bg-primary text-white">
+            <h4>Book Information Form</h4>
+        </div>
+        <div class="card-body">
+            <form asp-controller="Inventory" asp-action="AddBookToInventoryRequest" method="post" enctype="application/x-www-form-urlencoded">
+                <!-- Title Field --> 
+                <div class="form-group mb-3">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input type="text" class="form-control" asp-for="Title" id="title" placeholder="Enter the book title" >
+                    <span asp-validation-for="@Model.Title" class="text-danger"></span>
+                </div>
+
+                <!-- Author Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="Author" class="form-label">Author</label>
+                    <input type="text" asp-for="Author" class="form-control" id="author" placeholder="Enter the author's name" >
+                    <span asp-validation-for="@Model.Author" class="text-danger"></span>
+                </div>
+
+                <!-- Genre Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="Genre" class="form-label">Genre</label>
+                    <select class="form-select" id="genre" asp-for="Genre" >
+                        <option selected disabled value="">Choose genre</option>
+                        <option>Fiction</option>
+                        <option>Non-fiction</option>
+                        <option>Science Fiction</option>
+                        <option>Biography</option>
+                        <option>Mystery</option>
+                        <option>Fantasy</option>
+                        <option>Historical</option>
+                        <!-- Add more genres as needed -->
+                    </select>
+                    <span asp-validation-for="@Model.Genre" class="text-danger"></span>
+                </div>
+
+                <!-- Publication Date Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="PublicationDate" class="form-label">Publication Date</label>
+                    <input type="date" class="form-control" id="publicationDate" >
+                    <span asp-validation-for="@Model.PublicationDate" class="text-danger"></span>
+                </div>
+
+                <!-- ISBN Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="ISBN" class="form-label">ISBN</label>
+                        <input type="text" asp-for="ISBN" class="form-control" id="isbn" placeholder="Enter ISBN number" required>
+                    <span asp-validation-for="@Model.ISBN" class="text-danger"></span>
+                </div>
+
+                <!-- Submit and Reset Buttons -->
+                <div class=" d-flex justify-content-between gap-3 text-center my-2">
+                    <button type="submit" class="btn btn-success w-100 ">Submit</button>
+                   
+                    <a asp-controller="Inventory" asp-action="List" class="btn btn-danger w-100">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

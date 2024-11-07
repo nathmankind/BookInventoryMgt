@@ -1,0 +1,63 @@
+﻿@model List<Inventory>
+
+@{
+	ViewData["Title"] = "All Books";
+}
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Book Inventory Information List</h3>
+
+    <!-- Filter Section -->
+
+    <div class="row g-2 mb-3">
+        <div class="row col-md-8">
+            <form method="get" class="row col-md-12" asp-action="FilterFromInventory" asp-controller="Inventory">
+                <div class="col-md-8">
+                    <input type="text" id="filterInput" class="form-control" placeholder="Search by title, author..."  >
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" id="filterBtn" class="btn btn-primary">Filter</button>
+                </div>
+            </form>
+        </div>
+        <!-- Export Button -->
+
+        <div class="row col-md-4 justify-content-end flex-md-grow-1">
+            <a class="btn btn-success w-auto mx-md-2" asp-action="ExportToCsv" asp-controller="Inventory">
+                <i class="fas fa-file-export me-1"></i> Export to CSV
+            </a>
+            <a class="btn btn-primary w-auto" asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">
+                <i class="fas fa-plus me-2"></i> Add Book
+            </a>
+        </div>
+    </div>
+
+
+  
+    <!-- Table -->
+    <div class="table-responsive">
+        <table id="dataTable" class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>ISBN</th>
+                    <th>Publication Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Inventory book in Model)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                        <td>@book.Genre</td>
+                        <td>@book.ISBN</td>
+                        <td>@book.PublicationDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
