@@ -1,7 +1,9 @@
 ﻿using BookInventoryMgt.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BookInventoryMgt.Controllers
 {
@@ -25,12 +27,14 @@ namespace BookInventoryMgt.Controllers
         public IActionResult List()
         {
             var books = _inventoryDbContext.Inventories.ToList();
+            
             return View("List", books);
         }
 
         [HttpGet("/inventory/add-book")]
         public IActionResult GetAddBookToInventoryRequest()
         {
+            //ViewBag.Genres = _inventoryDbContext.Genres.ToList();
             return View("Create", new Inventory());
         }
 
@@ -48,13 +52,17 @@ namespace BookInventoryMgt.Controllers
         }
 
 
-        public IActionResult FilterFromInventory(string queryString)
+        public IActionResult FilterFromInventory(string searchQuery)
         {
-            if (!queryString.IsNullOrEmpty())
+
+            ViewData["searchQuery"] = searchQuery;
+            if (!searchQuery.IsNullOrEmpty())
             {
-
-
-                return View("List", "Inventory");
+                var _filteredInventory = _inventoryDbContext.Inventories
+                    .Where(b => (b.Title.Contains(searchQuery) || 
+                    b.Author.Contains(searchQuery) || 
+                    b.Genre.Contains(searchQuery))).ToList();
+                return View("List", _filteredInventory);
             }
             return RedirectToAction("List", "Inventory");
         }
@@ -79,15 +87,10 @@ namespace BookInventoryMgt.Controllers
             csvBuilder.AppendLine("ID,Title,Author,Genre,PublicationDate,ISBN");
             foreach (var book in inventory)
             {
-                csvBuilder.AppendLine($"{book.EntryId},{book.Title},{book.Author},{book.Genre},{book.PublicationDate},{book.ISBN}");
+                csvBuilder.AppendLine($"{book.EntryId},{book.Title},{book.Author},{book.Genre},{book.PublicationDate.ToString("dd-mm-yyyy")},{book.ISBN}");
             }
             return csvBuilder.ToString();
         }
-
-
-
-
-        
 
     }
 }

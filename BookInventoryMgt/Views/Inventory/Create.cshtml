@@ -1,5 +1,9 @@
 ﻿@model Inventory;
 
+@{
+    ViewData["Title"] = "Add New Book";
+}
+
 @section scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
@@ -48,15 +52,16 @@
                 <!-- Publication Date Field -->
                 <div class="form-group mb-3">
                     <label asp-for="PublicationDate" class="form-label">Publication Date</label>
-                    <input type="date" class="form-control" id="publicationDate" >
+                    <input type="date" asp-for="PublicationDate" class="form-control"  >
                     <span asp-validation-for="@Model.PublicationDate" class="text-danger"></span>
                 </div>
 
                 <!-- ISBN Field -->
                 <div class="form-group mb-3">
                     <label asp-for="ISBN" class="form-label">ISBN</label>
-                        <input type="text" asp-for="ISBN" class="form-control" id="isbn" placeholder="Enter ISBN number" required>
+                    <input type="text" asp-for="ISBN" class="form-control" id="isbn" placeholder="Enter ISBN number in the format (978-X-XXX-XXXXX-X) or " required>
                     <span asp-validation-for="@Model.ISBN" class="text-danger"></span>
+                    
                 </div>
 
                 <!-- Submit and Reset Buttons -->

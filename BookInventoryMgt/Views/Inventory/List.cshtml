@@ -10,19 +10,20 @@
     <!-- Filter Section -->
 
     <div class="row g-2 mb-3">
-        <div class="row col-md-8">
+        <div class="row col-md-8 col-xs-12 my-xs-2">
             <form method="get" class="row col-md-12" asp-action="FilterFromInventory" asp-controller="Inventory">
-                <div class="col-md-8">
-                    <input type="text" id="filterInput" class="form-control" placeholder="Search by title, author..."  >
+                <div class="col-md-8 col-xs-12">
+                    <input type="text" name="searchQuery" class="form-control" placeholder="Search by title, author..." value="@ViewData["searchQuery"]" />
+                   
                 </div>
-                <div class="col-md-4">
-                    <button type="submit" id="filterBtn" class="btn btn-primary">Filter</button>
+                <div class="col-md-4 col-xs-12 my-xs-2">
+                    <button type="submit" class="btn btn-primary">Filter</button>
                 </div>
             </form>
         </div>
         <!-- Export Button -->
 
-        <div class="row col-md-4 justify-content-end flex-md-grow-1">
+        <div class="row col-md-4 col-sm-12 justify-content-end flex-md-grow-1">
             <a class="btn btn-success w-auto mx-md-2" asp-action="ExportToCsv" asp-controller="Inventory">
                 <i class="fas fa-file-export me-1"></i> Export to CSV
             </a>
@@ -54,10 +55,31 @@
                         <td>@book.Author</td>
                         <td>@book.Genre</td>
                         <td>@book.ISBN</td>
-                        <td>@book.PublicationDate</td>
+                        <td>@book.PublicationDate.ToString("dd-mm-yyyy")</td>
                     </tr>
                 }
+                <td class="p-5 text-center" colspan="5">No data available </td>
             </tbody>
         </table>
+    </div>
+
+    <div class="d-block d-sm-none">
+
+        @foreach(var book in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@book.Title</h5>
+                    <p class="card-text">
+                        <strong>Author:</strong> @book.Author <br>
+                        <strong>Genre:</strong> @book.Genre <br>
+                        <strong>Publication Date:</strong> @book.PublicationDate.ToString("mm-dd-yyyy") <br>
+                        <strong>ISBN:</strong> @book.ISBN
+                    </p>
+                </div>
+            </div>
+        }
+        
+
     </div>
 </div>

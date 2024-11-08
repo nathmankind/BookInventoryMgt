@@ -4,8 +4,8 @@ namespace BookInventoryMgt.Entities
 {
     public class InventoryDbContext : DbContext
     {
-        public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) 
-        { 
+        public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
+        {
         }
 
         public DbSet<Inventory> Inventories { get; set; }

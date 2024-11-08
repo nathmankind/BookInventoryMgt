@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookInventoryMgt.Migrations
 {
     [DbContext(typeof(InventoryDbContext))]
-    [Migration("20241107195220_init")]
-    partial class init
+    [Migration("20241107235408_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
