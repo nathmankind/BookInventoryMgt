@@ -9,7 +9,11 @@ Pre-requisite
 - Have a Database Server installed (e.g Microsoft SQL Server Management Studio) 2022
 - A browser (Chrome, Edge, etc)
 
-First, clone the repository to your local machine using ```git clone https://github.com/nathmankind/BookInventoryMgt.git```
+First, clone the repository to your local machine using
+
+```
+git clone https://github.com/nathmankind/BookInventoryMgt.git
+```
 
 To run the application
 - Open the project folder and locate `BookInventoryMgt.sln` on the local drive
