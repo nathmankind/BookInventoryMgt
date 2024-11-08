@@ -87,7 +87,7 @@ namespace BookInventoryMgt.Controllers
             csvBuilder.AppendLine("ID,Title,Author,Genre,PublicationDate,ISBN");
             foreach (var book in inventory)
             {
-                csvBuilder.AppendLine($"{book.EntryId},{book.Title},{book.Author},{book.Genre},{book.PublicationDate.ToString("dd-mm-yyyy")},{book.ISBN}");
+                csvBuilder.AppendLine($"{book.EntryId},{book.Title},{book.Author},{book.Genre},{book.PublicationDate.ToString("dd/MM/yyyy")},{book.ISBN}");
             }
             return csvBuilder.ToString();
         }

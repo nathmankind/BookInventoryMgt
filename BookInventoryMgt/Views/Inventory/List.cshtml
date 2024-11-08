@@ -4,27 +4,27 @@
 	ViewData["Title"] = "All Books";
 }
 
-<div class="container mt-5">
+<div class="container mt-5 list_page">
     <h3 class="text-center mb-4">Book Inventory Information List</h3>
 
     <!-- Filter Section -->
 
-    <div class="row g-2 mb-3">
+    <div class="row mb-3">
         <div class="row col-md-8 col-xs-12 my-xs-2">
             <form method="get" class="row col-md-12" asp-action="FilterFromInventory" asp-controller="Inventory">
                 <div class="col-md-8 col-xs-12">
                     <input type="text" name="searchQuery" class="form-control" placeholder="Search by title, author..." value="@ViewData["searchQuery"]" />
                    
                 </div>
-                <div class="col-md-4 col-xs-12 my-xs-2">
-                    <button type="submit" class="btn btn-primary ">Filter</button>
+                <div class="col-md-4 col-xs-12 my-xs-2 ">
+                    <button type="submit" class="btn btn-primary w-100 d-sm-block d-md-inline-block my-2 my-md-0">Filter</button>
                 </div>
             </form>
         </div>
         <!-- Export Button -->
 
-        <div class="row col-md-4 col-xs-12 justify-content-end flex-grow-1">
-            <a class="btn btn-success w-auto mx-md-2" asp-action="ExportToCsv" asp-controller="Inventory">
+        <div class="row col-md-4 col-xs-12 col-sm-12 justify-content-between justify-content-md-end justify-content-sm-end flex-grow-1 _export_btn_wrapper">
+            <a class="btn btn-success w-auto" asp-action="ExportToCsv" asp-controller="Inventory">
                 <i class="fas fa-file-export me-1"></i> Export to CSV
             </a>
             <a class="btn btn-primary w-auto" asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">
@@ -36,7 +36,7 @@
 
   
     <!-- Table -->
-    <div class="table-responsive">
+    <div class="table-responsive d-none d-sm-block">
         <table id="dataTable" class="table table-striped table-hover table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -48,38 +48,56 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Inventory book in Model)
+
+                @if (Model.Count == 0 )
                 {
                     <tr>
-                        <td>@book.Title</td>
-                        <td>@book.Author</td>
-                        <td>@book.Genre</td>
-                        <td>@book.ISBN</td>
-                        <td>@book.PublicationDate.ToString("dd-mm-yyyy")</td>
+                        <td class="p-5 text-center" colspan="5">No data available.  <a asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">Click here</a> to add a book </td>
                     </tr>
                 }
-            <td class="p-5 text-center" colspan="5">No data available.  <a asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">Click here</a> to add a book </td>
-            </tbody>
+                else
+                {
+                    @foreach (Inventory book in Model)
+                    {
+                        <tr>
+                            <td>@book.Title</td>
+                            <td>@book.Author</td>
+                            <td>@book.Genre</td>
+                            <td>@book.ISBN</td>
+                            <td>@book.PublicationDate.ToString("dd-MMM-yyyy")</td>
+                        </tr>
+                    }
+                }
+           
+              </tbody>
         </table>
     </div>
 
     <div class="d-block d-sm-none">
-        <p>No data available. <a asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">Click here</a> to add a book</p>
-        @foreach(var book in Model)
+
+
+        @if (Model.Count == 0)
         {
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">@book.Title</h5>
-                    <p class="card-text">
-                        <strong>Author:</strong> @book.Author <br>
-                        <strong>Genre:</strong> @book.Genre <br>
-                        <strong>Publication Date:</strong> @book.PublicationDate.ToString("mm-dd-yyyy") <br>
-                        <strong>ISBN:</strong> @book.ISBN
-                    </p>
+            
+            <p class="py-4">No data available. <a asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">Click here</a> to add a book</p>
+
+        } else
+        {
+            @foreach (var book in Model)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">
+                            <strong>Author:</strong> @book.Author <br>
+                            <strong>Genre:</strong> @book.Genre <br>
+                            <strong>Publication Date:</strong> @book.PublicationDate.ToString("mm-dd-yyyy") <br>
+                            <strong>ISBN:</strong> @book.ISBN
+                        </p>
+                    </div>
                 </div>
-            </div>
+            }
         }
-        
 
     </div>
 </div>

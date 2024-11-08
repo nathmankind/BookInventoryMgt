@@ -24,3 +24,40 @@ body {
 .input-validation-error {
     border: 1px solid #dc3545; /* same red as text-danger */
 }
+
+.home_page_container {
+    background-image: url("https://live.staticflickr.com/3715/12585538065_1e2b60602b_c_d.jpg");
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 80vh;
+}
+
+.page_inner_content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    font-weight: 600;
+}
+
+.page_inner_content h1 {
+    font-weight:600 !important
+}
+
+.list_page .row {
+    --bs-gutter-x: 6px;
+}
+._export_btn_wrapper {
+    display: flex;
+    gap:4px
+}
+
+@media (max-width: 767px) {
+    .list_page .row {
+        --bs-gutter-x: 0;
+    }
+}

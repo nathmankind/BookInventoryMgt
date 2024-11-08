@@ -2,8 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Our Book Inventory Management system</h1>
-    <p>See the list of books we have in our inventory </p>
-    <a asp-action="List" asp-controller="Inventory">Click here</a>
+<div class="home_page_container">
+
+    <div class="text-center page_inner_content px-3">
+        <h1 class="display-4">Welcome to Our Book Inventory Management system</h1>
+        <p>See the list of books we have in our inventory </p>
+        <a asp-action="List" asp-controller="Inventory" class="btn btn-primary">Click here</a>
+    </div>
+
 </div>
+

@@ -18,23 +18,6 @@ namespace BookInventoryMgt.Entities
 
 
 
-
-            //if (value is DateTime)
-            //{
-            //    DateTime dateTimeCheck = (DateTime)value;
-
-            //    dateTimeCheck = dateTimeCheck.AddYears(_minAge);
-
-            //    if (dateTimeCheck <= DateTime.Today)
-            //    {
-            //        return ValidationResult.Success;
-            //    }
-            //}
-            //return new ValidationResult(GetMsg(validationContext.DisplayName));
-            ////return base.IsValid(value, validationContext)
-
-
-
         }
     }
 }
