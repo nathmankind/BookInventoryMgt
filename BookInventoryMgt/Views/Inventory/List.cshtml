@@ -2,13 +2,22 @@
 
 @{
 	ViewData["Title"] = "All Books";
+
 }
 
 <div class="container mt-5 list_page">
     <h3 class="text-center mb-4">Book Inventory Information List</h3>
 
-    <!-- Filter Section -->
+  
+    @if (TempData.ContainsKey("message"))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
+    <!-- Filter Section -->
     <div class="row mb-3">
         <div class="row col-md-8 col-xs-12 my-xs-2">
             <form method="get" class="row col-md-12" asp-action="FilterFromInventory" asp-controller="Inventory">

@@ -34,7 +34,6 @@ namespace BookInventoryMgt.Controllers
         [HttpGet("/inventory/add-book")]
         public IActionResult GetAddBookToInventoryRequest()
         {
-            //ViewBag.Genres = _inventoryDbContext.Genres.ToList();
             return View("Create", new Inventory());
         }
 
@@ -45,7 +44,7 @@ namespace BookInventoryMgt.Controllers
             {
                 _inventoryDbContext.Inventories.Add(inventory);
                 _inventoryDbContext.SaveChanges();
-                TempData["Message"] = "Book has been added to the inventory";
+                TempData["Message"] = $"{inventory.Title} has been added to the inventory";
                 return RedirectToAction("List", "Inventory");
             }
             return View("Create", inventory);
