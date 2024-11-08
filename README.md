@@ -5,8 +5,8 @@ This is a book inventory project built with .NET 8.0(LTS)
 To run the project
 
 Pre-requisite
-- Have Visual Studio installed on your system
-- Have a Databse Server installed (e.g Microsoft SQL Server Management Studio) 2022
+- Have [Visual Studio](https://visualstudio.microsoft.com/vs/) installed on your system
+- Have a Database Server installed (e.g Microsoft SQL Server Management Studio) 2022
 - A browser (Chrome, Edge, etc)
 
 First, clone the repository to your local machine using ```git clone https://github.com/nathmankind/BookInventoryMgt.git```
