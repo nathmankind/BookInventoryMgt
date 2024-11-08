@@ -25,6 +25,8 @@ body {
     border: 1px solid #dc3545; /* same red as text-danger */
 }
 
+
+/* Styling for webpage */
 .home_page_container {
     background-image: url("https://live.staticflickr.com/3715/12585538065_1e2b60602b_c_d.jpg");
     background-position:center;
