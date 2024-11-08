@@ -47,7 +47,7 @@ namespace BookInventoryMgt.Controllers
                 _inventoryDbContext.SaveChanges();
                 TempData["Message"] = "Book has been added to the inventory";
                 return RedirectToAction("List", "Inventory");
-            }else
+            }
             return View("Create", inventory);
         }
 

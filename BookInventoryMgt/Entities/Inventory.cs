@@ -16,6 +16,7 @@ namespace BookInventoryMgt.Entities
         public string Author { get; set; }
 
         [Required(ErrorMessage = "Publication date is required")]
+        [NoFutureDate(ErrorMessage ="No future date allowed")]
         public DateTime PublicationDate { get; set; }
 
 

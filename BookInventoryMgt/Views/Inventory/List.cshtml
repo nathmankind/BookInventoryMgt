@@ -17,13 +17,13 @@
                    
                 </div>
                 <div class="col-md-4 col-xs-12 my-xs-2">
-                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <button type="submit" class="btn btn-primary ">Filter</button>
                 </div>
             </form>
         </div>
         <!-- Export Button -->
 
-        <div class="row col-md-4 col-sm-12 justify-content-end flex-md-grow-1">
+        <div class="row col-md-4 col-xs-12 justify-content-end flex-grow-1">
             <a class="btn btn-success w-auto mx-md-2" asp-action="ExportToCsv" asp-controller="Inventory">
                 <i class="fas fa-file-export me-1"></i> Export to CSV
             </a>
@@ -58,13 +58,13 @@
                         <td>@book.PublicationDate.ToString("dd-mm-yyyy")</td>
                     </tr>
                 }
-                <td class="p-5 text-center" colspan="5">No data available </td>
+            <td class="p-5 text-center" colspan="5">No data available.  <a asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">Click here</a> to add a book </td>
             </tbody>
         </table>
     </div>
 
     <div class="d-block d-sm-none">
-
+        <p>No data available. <a asp-action="GetAddBookToInventoryRequest" asp-controller="Inventory">Click here</a> to add a book</p>
         @foreach(var book in Model)
         {
             <div class="card mb-3">
