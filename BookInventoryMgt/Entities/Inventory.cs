@@ -15,6 +15,10 @@ namespace BookInventoryMgt.Entities
         [Required(ErrorMessage ="Author is required")]
         public string Author { get; set; }
 
+
+        [Required(ErrorMessage = "Genre is required")]
+        public string Genre { get; set; }
+
         [Required(ErrorMessage = "Publication date is required")]
         [NoFutureDate(ErrorMessage ="No future date allowed")]
         public DateTime PublicationDate { get; set; }
@@ -27,8 +31,6 @@ namespace BookInventoryMgt.Entities
         public string ISBN { get; set; }
 
 
-        [Required(ErrorMessage = "Genre is required")]
-        public string Genre { get; set; }
 
     }
 }
